@@ -13,10 +13,10 @@ const nyTimeObj = {
     
 
     resetFuncton: function () {
-        this.domCarButtonsDiv.interHTML = "";
-        this.numOfButtons = 0;
-
+        document.getElementById("articleCardBody").innerHTML = ""
     },
+
+ 
 
     fetchArticle: function (topicName) {
 
@@ -76,14 +76,21 @@ const nyTimeObj = {
             document.getElementById("articleCardBody").prepend(cardDiv);
         }
     },
-    generateArticle: function() {
-        this.fetchArticle("Obama");
+    generateArticle: function(artilceTopic) {
+        this.fetchArticle(artilceTopic);
     }
 }
 
 window.onload = function(){    
     document.getElementById("article-submit").addEventListener("click", function(event) {
         event.preventDefault();
-        nyTimeObj.generateArticle();
+        nyTimeObj.resetFuncton();
+        nyTimeObj.generateArticle(document.getElementById("searchTermInput").value);
       });
+
+      document.getElementById("article-clear").addEventListener("click", function(event) {        
+        nyTimeObj.resetFuncton();
+      });
+
+      
 }
