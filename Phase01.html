@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Phase 1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <style>
+        .card {
+            margin-bottom: 25px;
+        }
+        .card-body:empty {
+            display: none;
+        }
+        #footer {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron bg-primary text-light text-center">
+            <h1><i class="far fa-newspaper"></i> New York Times Search</h1>
+        </div>
+        <div class="card">
+            <div class="card-header font-weight-bold">
+                <i class="fab fa-wpforms"></i> Search Parameters
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="searchTermInput">Search Term</label>
+                        <input type="text" class="form-control" id="searchTermInput" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="numberSelect">Number of Records to Retrieve</label>
+                        <select class="form-control" id="numberSelect">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="startYearInput">Start Year (optional)</label>
+                        <input type="text" class="form-control" id="startYearInput" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="endYearInput">End Year (optional)</label>
+                        <input type="text" class="form-control" id="endYearInput" placeholder="">
+                    </div>
+                    <button type="submit" class="btn btn-white">Search</button>
+                    <button type="reset" class="btn btn-white">Clear Results</button>
+                </form>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header font-weight-bold">
+                <i class="far fa-calendar-alt"></i> Top Articles
+            </div>
+            <div class="card-body"></div>
+        </div>
+        <hr>
+        <div id="footer">
+            Made with lots and lots of <i class="fas fa-heart"></i>
+        </div>
+    </div>
+</body>
+</html>
