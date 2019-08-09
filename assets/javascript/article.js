@@ -48,12 +48,12 @@ const nyTimeObj = {
         {
             const doc = responseJson.response.docs[index];
             const cardDiv = document.createElement("div");
-            cardDiv.className = "card bg-info mb-1 pb-1 rounded";
+            cardDiv.className = "card mb-1 pb-1 rounded";
             cardDiv.style = "width: 12rem; height:12rem; float:left"; 
             
 
             const cardBodyDiv = document.createElement("div");
-            cardBodyDiv.className = "card-body-sm bg-info rounded";
+            cardBodyDiv.className = "card-body-sm rounded";
             
 
             const textElem = document.createElement("h6");
@@ -68,7 +68,7 @@ const nyTimeObj = {
             for (let j = 0; j < doc.multimedia.length; j++) {
                 const multimedia = doc.multimedia[j];
                 if (multimedia.subtype === "thumbnail") {
-                    cardImg.src = multimedia.url;            
+                    cardImg.src = "https://nytimes.com/" + multimedia.url;            
                     cardDiv.appendChild(cardImg);
                 }
             }
@@ -76,12 +76,14 @@ const nyTimeObj = {
             document.getElementById("articleCardBody").prepend(cardDiv);
         }
     },
-
     generateArticle: function() {
         this.fetchArticle("Obama");
     }
 }
 
 window.onload = function(){    
-    nyTimeObj.generateArticle(); 
+    document.getElementById("article-submit").addEventListener("click", function(event) {
+        event.preventDefault();
+        nyTimeObj.generateArticle();
+      });
 }
