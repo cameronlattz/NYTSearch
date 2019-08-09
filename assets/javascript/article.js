@@ -44,8 +44,9 @@ const nyTimeObj = {
 
     loadArticle : function (responseJson) {
         
-        for (let index = 0; index < responseJson.data.length ; index++)
+        for (let index = 0; index < responseJson.response.docs.length ; index++)
         {
+            const doc = responseJson.response.docs[index];
             const cardDiv = document.createElement("div");
             cardDiv.className = "card bg-info mb-1 pb-1 rounded";
             cardDiv.style = "width: 12rem; height:12rem; float:left"; 
@@ -57,22 +58,22 @@ const nyTimeObj = {
 
             const textElem = document.createElement("h6");
             textElem.className = "card-title-sm";
-            textElem.textContent = responseJson.data[index].title === "" ? "No Title": ""/* need to reference JSON obj */ ;
+            textElem.textContent = doc.headline.print_headline === "" ? "No Title": doc.headline.print_headline;
             cardBodyDiv.appendChild(textElem);
+            cardDiv.appendChild(cardBodyDiv);
 
             const cardImg = document.createElement("img");
             cardImg.className = "card-img-bottom embed-responsive-item m-1 p-1 rounded";            
             cardImg.style = "width: 11rem; height:8rem;";
-            cardImg.src = responseJson.data[index].images.fixed_height.url;
+            for (let j = 0; j < doc.multimedia.length; j++) {
+                const multimedia = doc.multimedia[j];
+                if (multimedia.subtype === "thumbnail") {
+                    cardImg.src = multimedia.url;            
+                    cardDiv.appendChild(cardImg);
+                }
+            }
             
-            cardImg.setAttribute("item_value", /* need to reference JSON obj */"");            
-            cardImg.addEventListener("click", this.changeCarPics);
-
-            cardDiv.appendChild(cardBodyDiv);            
-            cardDiv.appendChild(cardImg);
-
-            
-            this.domCarBodyDiv.prepend(cardDiv);
+            document.getElementById("articleCardBody").prepend(cardDiv);
         }
     },
 
